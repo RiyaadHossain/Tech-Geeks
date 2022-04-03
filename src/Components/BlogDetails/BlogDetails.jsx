@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
-import { Navigate, useParams } from "react-router-dom";
-// import { BsChevronLeft } from "react-icons/bs";
+import { useNavigate, useParams } from "react-router-dom";
+import { BsChevronLeft } from 'react-icons/bs';
 import "./BlogDetails.css";
 
 const BlogDetails = () => {
+    const Navigate = useNavigate()
   const { id } = useParams();
   const [blog, setBlog] = useState({});
 
@@ -17,8 +18,8 @@ const BlogDetails = () => {
     <>
       <div className="header-gradient" />
       <div>
-        <button className="back-button" onClick={() => Navigate(-1)}>
-          {/* <BsChevronLeft /> */}Back
+        <button className="back-button" onClick={() => Navigate('/')}>
+          <BsChevronLeft/>
           <p>Back</p>
         </button>
         <div className="blog-details">
