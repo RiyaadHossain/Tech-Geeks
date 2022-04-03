@@ -1,11 +1,21 @@
-import React from 'react';
+import React, { useEffect, useState } from "react";
+import Blog from "../Blog/Blog";
+import './Home.css'
 
 const Home = () => {
-    return (
-        <div>
-            <h1>Home</h1>
-        </div>
-    );
+  const [blogs, setBlogs] = useState([]);
+  useEffect(() => {
+    fetch("https://retro-tech-talks.herokuapp.com/blogs")
+      .then((res) => res.json())
+      .then((data) => setBlogs(data));
+  }, []);
+  return (
+    <div className='blogs-container'>
+      {blogs.map((blog, index) => (
+        <Blog key={index} blog={blog} />
+      ))}
+    </div>
+  );
 };
 
 export default Home;
